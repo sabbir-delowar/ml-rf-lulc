@@ -29,18 +29,16 @@ ml-rf-lulc/
 ├── data/
 │   ├── raw/           # Raw data downloads and composites
 │   ├── interim/       # Processed intermediate files (e.g. aligned WorldCover)
-│   ├── processed/     # Final clipped and cleaned rasters
 ├── results/           # PNG maps and visual outputs
-├── scripts/           # Modular Python scripts for each pipeline step
-│   ├── 1-gee-download.py
-│   ├── 2-load-composite.py
-│   ├── 3-prepare-worldcover-map.py
-│   ├── 4-prepare-training-data.py
-│   ├── 5-train-model.py
-│   ├── 6-model-deploy.py
-│   ├── 7-clip-and-visualize-lulc.py
+├── notebooks/           # Jupyter notebooks
+│   ├── 1-gee-download.ipynb
+│   ├── 2-load-composite.ipynb
+│   ├── 3-prepare-worldcover-map.ipynb
+│   ├── 4-prepare-training-data.ipynb
+│   ├── 5-train-model.ipynb
+│   ├── 6-model-deploy.ipynb
+│   ├── 7-clip-and-visualize-lulc.ipynb
 ├── study-area/        # Barishal shapefile and boundary files
-├── notebooks/         # Jupyter notebooks for exploration and prototyping
 ├── .gitignore
 └── README.md
 ```
@@ -81,23 +79,22 @@ earthengine authenticate
 
 ## Usage
 
-### Run the pipeline step-by-step:
+### Run the pipeline step-by-step: open in JupyterLab/Notebook and run cells top to bottom
 
-- **Download Sentinel-2 composites** using the GEE API: `scripts/1-gee-download.py`
-- **Load and prepare composites**: `scripts/2-load-composite.py`
-- **Prepare and align WorldCover map**: `scripts/3-prepare-worldcover-map.py`
-- **Prepare training data**: `scripts/4-prepare-training-data.py`
-- **Train the Random Forest model**: `scripts/5-train-model.py`
-- **Deploy model and predict LULC**: `scripts/6-model-deploy.py`
-- **Clip prediction and visualize LULC maps**: `scripts/7-clip-and-visualize-lulc.py`
+- **Download Sentinel-2 composites** using the GEE API: `notebooks/1-gee-download.ipynb`
+- **Load and prepare composites**: `notebooks/2-load-composite.ipynb`
+- **Prepare and align WorldCover map**: `notebooks/3-prepare-worldcover-map.ipynb`
+- **Prepare training data**: `notebooks/4-prepare-training-data.ipynb`
+- **Train the Random Forest model**: `notebooks/5-train-model.ipynb`
+- **Deploy model and predict LULC**: `notebooks/6-model-deploy.ipynb`
+- **Clip prediction and visualize LULC maps**: `notebooks/7-clip-and-visualize-lulc.ipynb`
 
-*Note:* See notebooks for detailed exploration and prototyping.
 
 ---
 
 ## Output
 
-- Clipped GeoTIFF LULC maps (`data/processed/`)
+- Clipped GeoTIFF LULC maps (`results/`)
 - Color-coded PNG visualizations (`results/`)
 
 ---
@@ -105,7 +102,6 @@ earthengine authenticate
 ## Notes
 
 - Large GeoTIFF files are **excluded from the repo** due to GitHub limits; download or generate using scripts.
-- NoData areas outside the study area are masked and shown as white/transparent.
 - Future work includes automating the entire pipeline and expanding to other regions.
 
 ---
